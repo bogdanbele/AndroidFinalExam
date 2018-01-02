@@ -64,9 +64,10 @@ public class LandingScreenActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.productList);
         ArrayList<Product> productsList = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-
+        Product product = new Product("Bread","01/01/2018");
         Fridge fridge = readFile();
-        fridge.addProduct(new Product("maioenza", "01/01/1991"));
+        fridge.addProduct(product);
+        product.scheduleNotification(this);
         listView.setAdapter(new ProductAdapter(this, fridge));
     }
 
