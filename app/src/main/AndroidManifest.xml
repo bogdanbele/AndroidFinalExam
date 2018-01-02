@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".LandingScreenActivity"/>
+
+        <service android:name=".services.NotificationService" />
     </application>
 
 </manifest>

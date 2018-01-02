@@ -3,6 +3,8 @@ package dk.sidereal.finalexambogdanbele.utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import dk.sidereal.finalexambogdanbele.models.Product;
+
 /**
  * Created by Bogdan on 12/27/2017.
  */

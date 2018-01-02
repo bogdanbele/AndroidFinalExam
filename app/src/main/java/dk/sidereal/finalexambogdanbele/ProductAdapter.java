@@ -12,7 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import dk.sidereal.finalexambogdanbele.utils.Product;
+import dk.sidereal.finalexambogdanbele.models.Fridge;
+import dk.sidereal.finalexambogdanbele.models.Product;
 
 /**
  * Created by Bogdan on 12/27/2017.
@@ -20,12 +21,16 @@ import dk.sidereal.finalexambogdanbele.utils.Product;
 
 public class ProductAdapter extends ArrayAdapter<Product> {
     private Context pContext;
-    private List<Product> productsList = new ArrayList<>();
+    private Fridge fridge;
 
-    public ProductAdapter(@NonNull Context context, @NonNull ArrayList<Product> objects) {
-        super(context, 0, objects);
+    public ProductAdapter(@NonNull Context context, @NonNull Fridge fridge) {
+        super(context, 0, fridge.getProductList());
         pContext = context;
-        productsList = objects;
+        this.fridge = fridge;
+    }
+
+    public Fridge getFridge() {
+        return fridge;
     }
 
     @NonNull
@@ -35,10 +40,10 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         if(listItem == null){
             listItem = LayoutInflater.from(pContext).inflate(R.layout.list_item,parent,false);
            }
-        Product currentProduct = productsList.get(position);
-        TextView name = (TextView) listItem.findViewById(R.id.textView);
+        Product currentProduct = fridge.getProductList().get(position);
+        TextView name = listItem.findViewById(R.id.textView);
         name.setText((currentProduct.getName()));
-        TextView date = (TextView) listItem.findViewById((R.id.textView2));
+        TextView date = listItem.findViewById((R.id.textView2));
         date.setText(currentProduct.getExpirationDateToString());
         return listItem;
     }
