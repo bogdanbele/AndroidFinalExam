@@ -39,7 +39,7 @@ public class NotificationService extends IntentService {
         Product product = new Gson().fromJson(intent.getStringExtra("product"), Product.class);
         Notification.Builder notificationBuilder = new Notification.Builder(this);
         notificationBuilder.setContentTitle(product.getName() + " is expired ");
-        notificationBuilder.setContentText(product.getName() + " is going to expire on " + product.getExpirationDate().toString());
+        notificationBuilder.setContentText(product.getName() + " has expired on " + product.getExpirationDate().toString());
         notificationBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
 
         Intent activityIntent = new Intent(this, LandingScreenActivity.class);

@@ -23,5 +23,7 @@ public class Fridge {
         this.getProductList().add(product);
     }
 
+    public void emptyFridge() { this.getProductList().removeAll(productList); }
+
 
 }

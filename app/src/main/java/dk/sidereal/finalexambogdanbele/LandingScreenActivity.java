@@ -64,10 +64,7 @@ public class LandingScreenActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.productList);
         ArrayList<Product> productsList = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-        Product product = new Product("Bread","01/01/2018");
         Fridge fridge = readFile();
-        fridge.addProduct(product);
-        product.scheduleNotification(this);
         listView.setAdapter(new ProductAdapter(this, fridge));
     }
 
@@ -96,17 +93,7 @@ public class LandingScreenActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
     }
 
-    private void requestStoragePermission2() {
 
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
-        }
-
-        //And finally ask for the permission
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE2);
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -131,7 +118,7 @@ public class LandingScreenActivity extends AppCompatActivity {
     private static Fridge createDummyObject() {
 
 
-        Product test = new Product("Bec", "23/11/2051");
+        Product test = new Product("Test if empty", "23/11/2051");
         Fridge fridge = new Fridge();
         fridge.addProduct(test);
         return fridge;

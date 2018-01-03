@@ -17,4 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public void goToLandingScreen(View v) {
         startActivity(new Intent(this, LandingScreenActivity.class));
     }
+    public void goToAddProductActivity(View v) {
+        startActivity(new Intent(this, AddProductActivity.class));
+    }
 }

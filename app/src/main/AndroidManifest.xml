@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LandingScreenActivity"/>
+        <activity android:name=".AddProductActivity" />
 
         <service android:name=".services.NotificationService" />
     </application>
