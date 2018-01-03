@@ -42,4 +42,14 @@
         android:onClick="goToAddProductActivity"
         android:layout_marginTop="80dp" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/addProduct"
+        android:layout_below="@+id/addProduct"
+        android:layout_marginTop="27dp"
+        android:text="View Expired"
+        android:onClick="goToExpiredProducts"/>
+
 </RelativeLayout>

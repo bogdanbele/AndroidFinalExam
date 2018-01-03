@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".LandingScreenActivity"/>
         <activity android:name=".AddProductActivity" />
+        <activity android:name=".ExpiredProductsActivity" />
 
         <service android:name=".services.NotificationService" />
     </application>

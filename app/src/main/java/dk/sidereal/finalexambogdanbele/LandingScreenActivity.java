@@ -49,8 +49,6 @@ public class LandingScreenActivity extends AppCompatActivity {
 
     private ListView listView;
 
-    static ArrayList<Product> productsList;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_screen);

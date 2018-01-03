@@ -20,4 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public void goToAddProductActivity(View v) {
         startActivity(new Intent(this, AddProductActivity.class));
     }
+    public void goToExpiredProducts(View v){
+        startActivity(new Intent(this, ExpiredProductsActivity.class));
+    }
 }
