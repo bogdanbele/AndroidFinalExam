@@ -9,7 +9,11 @@ import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -62,8 +66,19 @@ public class LandingScreenActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.productList);
         ArrayList<Product> productsList = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-        Fridge fridge = readFile();
-        listView.setAdapter(new ProductAdapter(this, fridge));
+        final Fridge fridge = readFile();
+        final ProductAdapter productAdapter = new ProductAdapter(this, fridge);
+        listView.setAdapter(productAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //              productSet.remove(removedElement.getText().toString());
+                fridge.getProductList().remove(position);
+                productAdapter.notifyDataSetChanged();
+                //              sharedPref.edit().putStringSet("productsz", productSet).apply();
+            }
+        });
     }
 
     @Override
@@ -75,9 +90,9 @@ public class LandingScreenActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-
     }
+
+
 
     private void requestStoragePermission() {
 
@@ -90,7 +105,6 @@ public class LandingScreenActivity extends AppCompatActivity {
         //And finally ask for the permission
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
     }
-
 
 
     @Override
@@ -114,7 +128,6 @@ public class LandingScreenActivity extends AppCompatActivity {
 
 
     private static Fridge createDummyObject() {
-
 
         Product test = new Product("Test if empty", "23/11/2051");
         Fridge fridge = new Fridge();

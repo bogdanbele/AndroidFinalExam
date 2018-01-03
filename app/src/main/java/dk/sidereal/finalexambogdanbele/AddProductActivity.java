@@ -62,6 +62,7 @@ public class AddProductActivity extends AppCompatActivity {
         fridge.addProduct(newProduct);
         writeFile(fridge);
         startActivity(new Intent(this, LandingScreenActivity.class));
+        finish();
     }
 
     Fridge readFile() {

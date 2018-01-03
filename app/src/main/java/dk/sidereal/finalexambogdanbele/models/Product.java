@@ -44,8 +44,6 @@ public class Product {
         if (alarmManager != null) {
             alarmManager.set(AlarmManager.RTC,when,pendingIntent);
         }
-
-
     }
 
     public String getName() {
