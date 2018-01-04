@@ -97,14 +97,4 @@ public class Product {
 
     }
 
-    public void setExpirationDate(String expirationDate) {
-        SimpleDateFormat f = new SimpleDateFormat("dd/mm/yyyy");
-        try {
-            this.expirationDate = f.parse(expirationDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }
