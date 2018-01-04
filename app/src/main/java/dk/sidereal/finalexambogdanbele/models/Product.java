@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 import dk.sidereal.finalexambogdanbele.services.NotificationService;
 
@@ -21,12 +22,26 @@ import dk.sidereal.finalexambogdanbele.services.NotificationService;
 
 public class Product {
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
     private String name;
     private Date expirationDate;
 
 
     public Product(String name, String expirationDate) {
         this.name = name;
+        long time = new Date().getTime();
+        String tmpStr = String.valueOf(time);
+        String last4Str = tmpStr.substring(tmpStr.length() - 5);
+        int notificationId = Integer.valueOf(last4Str);
+        this.id = notificationId;
         SimpleDateFormat f = new SimpleDateFormat("dd/mm/yyyy");
         try {
             this.expirationDate = f.parse(expirationDate);
@@ -39,8 +54,17 @@ public class Product {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         long when = expirationDate.getTime();
         Intent intent = new Intent(context, NotificationService.class);
+        intent.removeExtra("product");
         intent.putExtra("product",new Gson().toJson(this));
-        PendingIntent pendingIntent = PendingIntent.getService(context, 0,intent,0);
+        PendingIntent.getBroadcast(context, 0, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT).cancel();
+
+        long time = new Date().getTime();
+        String tmpStr = String.valueOf(time);
+        String last4Str = tmpStr.substring(tmpStr.length() - 5);
+        int notificationId = Integer.valueOf(last4Str);
+
+        PendingIntent pendingIntent = PendingIntent.getService(context, notificationId,intent,0);
         if (alarmManager != null) {
             alarmManager.set(AlarmManager.RTC,when,pendingIntent);
         }

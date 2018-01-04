@@ -11,6 +11,8 @@ import android.support.v4.app.NotificationBuilderWithBuilderAccessor;
 
 import com.google.gson.Gson;
 
+import java.util.Date;
+
 import dk.sidereal.finalexambogdanbele.LandingScreenActivity;
 import dk.sidereal.finalexambogdanbele.R;
 import dk.sidereal.finalexambogdanbele.models.Product;
@@ -20,11 +22,7 @@ import dk.sidereal.finalexambogdanbele.models.Product;
  */
 
 public class NotificationService extends IntentService {
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
+
     public NotificationService(String name) {
         super(name);
     }
@@ -45,7 +43,6 @@ public class NotificationService extends IntentService {
         Intent activityIntent = new Intent(this, LandingScreenActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, activityIntent, 0);
         notificationBuilder.setContentIntent(pendingIntent);
-
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         if (notificationManager != null) {
             notificationManager.notify(product.hashCode(), notificationBuilder.build());

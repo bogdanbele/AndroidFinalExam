@@ -39,15 +39,6 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
-    private void updateLabel() {
-        String myFormat = "MM/dd/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
-
-    }
-
-
-
-
     public void addProduct(View view) {
         DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
         int day = datePicker.getDayOfMonth();

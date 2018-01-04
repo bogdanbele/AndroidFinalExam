@@ -139,7 +139,6 @@ public class LandingScreenActivity extends AppCompatActivity {
 
 
     Fridge readFile() {
-        Fridge fridge = null;
 
         try (Reader reader = new FileReader(Environment.getExternalStorageDirectory() + "/test.json")) {
             // Convert JSON to Java Object

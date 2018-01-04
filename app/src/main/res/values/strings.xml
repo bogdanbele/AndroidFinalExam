@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">FinalExamBogdanBele</string>
     <string name="welcome_to_foodminder">Welcome to Foodminder</string>
-    <string name="continue2">Continue</string>
+    <string name="continue2">Products</string>
 </resources>
