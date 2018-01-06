@@ -33,10 +33,21 @@ public class Product {
     private String name;
     private Date expirationDate;
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    private Date creationDate;
+
 
     public Product(String name, String expirationDate) {
         this.name = name;
         long time = new Date().getTime();
+        this.creationDate = Calendar.getInstance().getTime();
         String tmpStr = String.valueOf(time);
         String last4Str = tmpStr.substring(tmpStr.length() - 5);
         this.id = Integer.valueOf(last4Str);

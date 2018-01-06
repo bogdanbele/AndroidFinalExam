@@ -8,7 +8,7 @@
     android:paddingRight="16dp">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/expDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button"
@@ -24,8 +24,8 @@
         android:id="@+id/ic_logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_above="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
+        android:layout_above="@+id/expDate"
+        android:layout_alignStart="@+id/expDate"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="43dp"
         android:contentDescription="@string/imageContentDesc"

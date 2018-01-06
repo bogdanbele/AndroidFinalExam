@@ -62,13 +62,13 @@ public class NotificationService extends IntentService {
             notificationBuilder.setContentText(product.getName() + " has expired on " + date);
         }
         else{
-            notificationBuilder.setContentTitle(product.getName() + " is expiring in " + daysIntentString + "days");
+            notificationBuilder.setContentTitle(product.getName() + " is expiring in " + daysIntentString + " days");
             notificationBuilder.setContentText(product.getName() + " is expiring on " + date);
         }
 
 
 
-        notificationBuilder.setSmallIcon(R.drawable.ic_launcher_foreground);
+        notificationBuilder.setSmallIcon(R.drawable.ic_logo_dark);
 
         Intent activityIntent = new Intent(this, LandingScreenActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, activityIntent, 0);

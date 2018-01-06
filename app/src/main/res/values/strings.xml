@@ -4,4 +4,6 @@
     <string name="continue2">Products</string>
     <string name="button">Add food</string>
     <string name="imageContentDesc">Logo</string>
+    <string name="product_test">Product Test</string>
+    <string name="xx_xx_xxxx">XX/XX/XXXX</string>
 </resources>

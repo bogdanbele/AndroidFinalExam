@@ -9,9 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import dk.sidereal.finalexambogdanbele.models.Fridge;
 import dk.sidereal.finalexambogdanbele.models.Product;
 
@@ -43,7 +40,7 @@ public class ExpiredAdapter extends ArrayAdapter<Product> {
         Product currentProduct = fridge.getExpiredProducts().get(position);
         TextView name = listItem.findViewById(R.id.textView);
         name.setText((currentProduct.getName()));
-        TextView date = listItem.findViewById((R.id.textView2));
+        TextView date = listItem.findViewById((R.id.creationDate));
         date.setText(currentProduct.getExpirationDateToString());
         return listItem;
     }
