@@ -32,7 +32,7 @@ public class LandingScreenActivity extends AppCompatActivity {
 
     Set<String> localSet;
     static final String filename = "products.txt";
-
+    static boolean permissionCheck = false;
 
     private static final int PERMISSION_REQUEST_CODE = 1;
     private static final int PERMISSION_REQUEST_CODE2 = 2;
@@ -44,7 +44,10 @@ public class LandingScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_screen);
 
-        requestStoragePermission();
+        if(permissionCheck){
+            requestStoragePermission();
+            permissionCheck=false;
+        }
 
         listView = (ListView) findViewById(R.id.productList);
         ArrayList<Product> productsList = new ArrayList<>();

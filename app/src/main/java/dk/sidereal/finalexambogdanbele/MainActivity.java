@@ -24,17 +24,20 @@ public class MainActivity extends AppCompatActivity {
     private void setupWindowAnimations() {
         Fade fade = new Fade();
         fade.setDuration(1000);
-        getWindow().setEnterTransition(fade);
+
 
         Slide slide = new Slide();
         slide.setDuration(1000);
-        getWindow().setReturnTransition(slide);
+
+
+        getWindow().setEnterTransition(slide);
+        getWindow().setReturnTransition(fade);
     }
 
 
     public void goToLandingScreen(View v) {
         Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
-        startActivity(new Intent(this, LandingScreenActivity.class),bundle );
+        startActivity(new Intent(this, LandingScreenActivity.class), bundle );
     }
     public void goToAddProductActivity(View v) {
         Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(this).toBundle();
