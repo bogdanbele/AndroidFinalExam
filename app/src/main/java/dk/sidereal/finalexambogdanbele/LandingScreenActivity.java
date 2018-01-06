@@ -1,40 +1,27 @@
 package dk.sidereal.finalexambogdanbele;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import dk.sidereal.finalexambogdanbele.models.Fridge;
 import dk.sidereal.finalexambogdanbele.models.Product;
+
+import static dk.sidereal.finalexambogdanbele.utils.FileHandler.readFile;
+import static dk.sidereal.finalexambogdanbele.utils.FileHandler.writeFile;
 
 /**
  * Created by Bogdan on 12/26/2017.
@@ -57,10 +44,6 @@ public class LandingScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_screen);
 
-
-        //ListView shoppingList = (ListView) findViewById(R.id.productList);
-        //readFile();
-
         requestStoragePermission();
 
         listView = (ListView) findViewById(R.id.productList);
@@ -79,8 +62,13 @@ public class LandingScreenActivity extends AppCompatActivity {
                 //              sharedPref.edit().putStringSet("productsz", productSet).apply();
             }
         });
-    }
+        setupWindowAnimations();
 
+    }
+    private void setupWindowAnimations() {
+        Transition slide = TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
+        getWindow().setExitTransition(slide);
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -127,44 +115,4 @@ public class LandingScreenActivity extends AppCompatActivity {
     }
 
 
-    private static Fridge createDummyObject() {
-
-        Product test = new Product("Test if empty", "23/11/2051");
-        Fridge fridge = new Fridge();
-        fridge.addProduct(test);
-        return fridge;
-
-
-    }
-
-
-    Fridge readFile() {
-
-        try (Reader reader = new FileReader(Environment.getExternalStorageDirectory() + "/test.json")) {
-            // Convert JSON to Java Object
-            return new Gson().fromJson(reader, Fridge.class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            return createDummyObject();
-        }
-
-    }
-
-
-    void writeFile(Fridge fridge) {
-        //1. Convert object to JSON string
-        Gson gson = new Gson();
-        File sdCardFile;
-        sdCardFile = new File(Environment.getExternalStorageDirectory() + "/test.json");
-        //2. Convert object to JSON string and save into a file directly
-
-        try (FileWriter writer = new FileWriter(sdCardFile)) {
-
-            gson.toJson(fridge, writer);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
